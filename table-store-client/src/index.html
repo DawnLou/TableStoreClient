@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../node_modules/iview/dist/styles/iview.css"/>
+    <link rel="stylesheet" href="../node_modules/jsoneditor/dist/jsoneditor.min.css">
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<style>
+    html {
+        width: 100%;
+        height: 100%
+    }
+
+    body {
+        width: 100%;
+        height: 100%
+    }
+
+    #app {
+        width: 100%;
+        height: 100%
+    }
+</style>
+<body>
+<div id="app"/>
+</body>
+
+<script>
+    import Vue from 'vue';
+    import store from './store/index'
+    import App from './App';
+    import iView from 'iview'
+    import uuid from './plugins/uuid'
+    import logger from './plugins/logger'
+    import ipc from './plugins/ipc'
+    import ErrorView from './views/ErrorView'
+
+    Vue.use(iView)
+    Vue.use(logger)
+    Vue.use(ipc)
+    Vue.use(uuid)
+    Vue.component('ErrorView', ErrorView)
+
+    new Vue({
+        store,
+        render: h => h(App)
+    }).$mount('#app');
+</script>
+</html>
